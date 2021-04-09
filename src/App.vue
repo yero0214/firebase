@@ -2,14 +2,34 @@
   <div id="app">
     <header>
       <nav>
-        <router-link to="/">Home</router-link>
-        <router-link to="/login">Login</router-link>
-        <router-link to="/signup">SingUp</router-link>
+        <h1>LOH.GG</h1>
+        <router-link to="/login" v-if="!state">Login</router-link>
+        <router-link to="/register" v-if="!state">Register</router-link>
+        <a v-if="!state" @click="signOut()">Sign out</a>
       </nav>
     </header>
     <router-view/>
   </div>
 </template>
+
+<script>
+import {auth} from '@/firebase';
+
+export default {
+  data (){
+    return{
+      state: false,
+
+    }
+  },
+    methods:{
+      signOut(){
+        auth.signOut()
+          .then(() => console.log('signed out'))
+      }
+    }
+}
+</script>
 
 <style>
 body{
@@ -33,14 +53,20 @@ header{
   box-sizing: border-box;
   box-shadow: 0px 0px 6px rgba(0,0,0,0.1);
 }
-header a{
+a{
+  transition: 0.2s;
   margin-left: 10px;
-  border-bottom: 2px solid black;
   padding: 4px;
   cursor: pointer;
 }
-header a:hover{
+a:hover{
   background: gray;
   color: white;
+}
+header h1{
+  margin: 0;
+  position: absolute;
+  left: 20px;
+  top: 15px;
 }
 </style>

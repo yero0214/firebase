@@ -1,25 +1,23 @@
 <template>
 <div>
-  <div class="login" @click="goHome()">
-    
-  </div>
-  <div class="login-content">
+  <div class="register" @click="goHome()"></div>
+  <div class="register-content">
       <div class="title">
-        <h1>Login</h1>
+        <h1>Register</h1>
       </div>
       <div class="content">
         <div class="email">
-          <input type="text" placeholder="Email" autocomplete="off" v-model="email" @keyup.enter="login()">
+          <input type="text" placeholder="Email" autocomplete="off" v-model="email" @keyup.enter="register()">
         </div>
         <div class="pwd">
-          <input type="text" placeholder="Password" autocomplete="off" v-model="pwd" @keyup.enter="login()">
+          <input type="text" placeholder="Password" autocomplete="off" v-model="pwd" @keyup.enter="register()">
         </div>
         <span>{{errorMsg}}</span>
         <div class="button">
-          <button @click="login()">Login</button>
+          <button @click="register()">Register</button>
         </div>
         <div class="link">
-          <strong>No account?</strong><router-link to="/register">Register instead</router-link>
+          <strong>Got an account?</strong><router-link to="/login">Login instead</router-link>
         </div>
         <div class="home">
           <router-link to="/">Go to home</router-link>
@@ -36,7 +34,7 @@ import {auth} from '@/firebase';
 import {validation} from '@/common'
 
 export default {
-  name: 'Login',
+  name: 'Register',
   components: {
 
   },
@@ -48,7 +46,7 @@ export default {
     }
   },
   methods:{
-    login(){
+    register(){
       const email = this.email;
       const pwd = this.pwd;
 
@@ -58,9 +56,9 @@ export default {
         return;
       }
 
-      auth.signInWithEmailAndPassword(email, pwd)
-        .then(user => {
-          console.log('logged in', user);
+      auth.createUserWithEmailAndPassword(email, pwd)
+        .then(user =>{
+          console.log('registered',user);
         })
         .catch(error => {
           this.errorMsg = error.message;
@@ -68,12 +66,12 @@ export default {
     },
     goHome(){
       this.$router.push('/')
-    },
+    }
   }
 }
 </script>
 <style scoped>
-.login {
+.register {
     position: fixed;
     left: 0;
     top: 0;
@@ -81,7 +79,7 @@ export default {
     height: 100%;
     background-color: rgb(250, 250, 250);
 }
-.login-content {
+.register-content {
     position: absolute;
     top: 50%;
     left: 50%;

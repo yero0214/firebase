@@ -8,35 +8,8 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   </head>
   <body>
-    <div id="app"></div>
-
-    <!-- The core Firebase JS SDK is always required and must be listed first -->
-    <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
-
-    <!-- TODO: Add SDKs for Firebase products that you want to use
-        https://firebase.google.com/docs/web/setup#available-libraries -->
-    <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-analytics.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-firestore.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-firestore.js"></script>
-
-    <script>
-      // Your web app's Firebase configuration
-      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-      var firebaseConfig = {
-        apiKey: "AIzaSyDheitVauZk677ujPjCIs2_1lRE9hCf_W8",
-        authDomain: "leagueofhaine-1b716.firebaseapp.com",
-        projectId: "leagueofhaine-1b716",
-        storageBucket: "leagueofhaine-1b716.appspot.com",
-        messagingSenderId: "846755171974",
-        appId: "1:846755171974:web:ae467ced80f2bee6e1cb07",
-        measurementId: "G-SPGK6XWQN6"
-      };
-      // Initialize Firebase
-      firebase.initializeApp(firebaseConfig);
-      firebase.analytics();
-
-    </script>
-
+    <div id="app">
+      <app :state="stete" />
+    </div>
   </body>
 </html>
