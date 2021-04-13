@@ -3,12 +3,16 @@
     <header>
       <nav>
         <h1>LOH.GG</h1>
-        <router-link to="/login" v-if="!state">Login</router-link>
-        <router-link to="/register" v-if="!state">Register</router-link>
-        <a v-if="!state" @click="signOut()">Sign out</a>
+        <router-link to="/login" v-if="!$store.state.state">Login</router-link>
+        <router-link to="/register" v-if="!$store.state.state">Register</router-link>
+        <a v-if="$store.state.state" @click="signOut()">Sign out</a>
       </nav>
     </header>
     <router-view/>
+       
+    <!-- loh.gg isn't endorsed by Riot Games and doesn't reflect the views or opinions of
+    Riot Games or anyone officially involved in producing or managing Riot Games properties.
+    Riot Games, and all associated properties are trademarks or registered trademarks of Riot Games, Inc. -->
   </div>
 </template>
 
@@ -18,7 +22,6 @@ import {auth} from '@/firebase';
 export default {
   data (){
     return{
-      state: false,
 
     }
   },
